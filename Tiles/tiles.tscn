@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tiles/tilesTest.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="tiles" type="Node2D"]
+
+[node name="Ice" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 40, 8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 20, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tiles2" type="StaticBody2D" parent="Ice"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice/Tiles2"]
+shape = SubResource( 1 )
+
+[node name="Dirt" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tiles" type="StaticBody2D" parent="Dirt"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dirt/Tiles"]
+shape = SubResource( 1 )
+
