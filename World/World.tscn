@@ -1,80 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://World/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/Idle.png" type="Texture" id=2]
-[ext_resource path="res://Player/Moving.png" type="Texture" id=3]
-[ext_resource path="res://Tiles/tiles.tres" type="TileSet" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 15 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
-length = 0.1
-step = 0.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("animation:root_node")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ NodePath("..") ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 2 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "run"
-step = 0.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tiles/tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Player/AnibalBoos.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 288, 16 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 1 )
-
-[node name="animation" type="AnimationPlayer" parent="Player"]
-anims/Idle = SubResource( 2 )
-anims/run = SubResource( 3 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 320.175 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114149, 1, 0, 1179650, 0, 0, 1179684, 1, 0, 1179685, 1, 0, 1179686, 1, 0, 1179687, 1, 0, 1245186, 0, 0, 1245210, 1, 0, 1245211, 1, 0, 1245212, 1, 0, 1245213, 1, 0, 1245220, 1, 0, 1245221, 0, 0, 1310722, 0, 0, 1310743, 1, 0, 1310744, 1, 0, 1310745, 1, 0, 1310746, 1, 0, 1310749, 1, 0, 1310754, 1, 0, 1310755, 1, 0, 1310756, 1, 0, 1310757, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 1, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376285, 1, 0, 1376286, 1, 0, 1376287, 1, 0, 1376288, 1, 0, 1376289, 1, 0, 1376290, 1, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 65536, 0, 0, 65575, 0, 0, 131072, 0, 0, 131073, 0, 0, 131110, 0, 0, 131111, 0, 0, 196608, 0, 0, 196610, 0, 0, 196645, 0, 0, 196647, 0, 0, 262144, 0, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 262168, 1, 0, 262169, 1, 0, 262170, 1, 0, 262171, 1, 0, 262172, 1, 0, 262173, 1, 0, 262174, 1, 0, 262175, 1, 0, 262176, 1, 0, 262177, 1, 0, 262178, 1, 0, 262179, 1, 0, 262180, 1, 0, 262183, 0, 0, 327680, 0, 0, 327719, 0, 0, 393216, 0, 0, 393255, 0, 0, 458752, 0, 0, 458791, 0, 0, 524288, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524327, 0, 0, 589824, 0, 0, 589863, 0, 0, 655360, 1, 0, 655399, 0, 0, 720896, 1, 0, 720935, 1, 0, 786432, 1, 0, 786471, 1, 0, 851968, 1, 0, 851969, 1, 0, 851970, 1, 0, 851971, 1, 0, 851972, 1, 0, 851973, 1, 0, 851974, 1, 0, 851975, 1, 0, 851976, 1, 0, 851999, 1, 0, 852000, 1, 0, 852001, 1, 0, 852002, 1, 0, 852003, 1, 0, 852004, 1, 0, 852005, 1, 0, 852006, 1, 0, 852007, 1, 0, 917504, 1, 0, 917535, 0, 0, 917543, 1, 0, 983040, 1, 0, 983079, 1, 0, 1048576, 1, 0, 1048615, 1, 0, 1114112, 0, 0, 1114151, 1, 0, 1179648, 1, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179687, 1, 0, 1245184, 1, 0, 1245223, 1, 0, 1310720, 1, 0, 1310744, 0, 0, 1310759, 1, 0, 1376256, 1, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1376289, 0, 0, 1376290, 0, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 0, 0, 1376294, 1, 0, 1376295, 1, 0 )
+
+[node name="AnibalBoos" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 320 )
 

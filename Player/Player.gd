@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 const UP = Vector2(0,-1)
-const GRAVITY = 20
+const GRAVITY = 500
 const SPEED = 300
-const JUMP = -500
+const JUMP = -300
 
 var motion = Vector2()
 
@@ -19,17 +19,16 @@ func get_Input():
 		motion.y = JUMP
 	if right:
 		motion.x = SPEED
-		$animation.play("run")
-		$Sprite.flip_h = true
+		$Sprite.flip_h = false
 	elif left:
 		motion.x = -SPEED
-		$animation.play("run")
-		$Sprite.flip_h = false
+		$Sprite.flip_h = true
 	else:
 		motion.x = 0
-		$animation.play("Idle")
+		
+
 
 func _physics_process(delta):
-	motion.y += GRAVITY
+	motion.y += GRAVITY * delta
 	get_Input()
 	motion = move_and_slide(motion, UP)
